@@ -1,3 +1,5 @@
+import store from './store';
+
 const SET_THEME = 'SET_THEME';
 
 const setThemeAction = theme => ({
@@ -6,9 +8,7 @@ const setThemeAction = theme => ({
 });
 
 const setTheme = theme => {
-  return dispatch => {
-    dispatch(setThemeAction(theme));
-  };
+  store.dispatch(setThemeAction(theme));
 };
 
 export { SET_THEME, setTheme };

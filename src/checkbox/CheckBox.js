@@ -13,6 +13,7 @@ import colors from '../config/colors';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import getIconType from '../helpers/getIconType';
 import ViewPropTypes from '../config/ViewPropTypes';
+import { connect } from 'react-redux';
 
 const CheckBox = props => {
   const {
@@ -32,12 +33,14 @@ const CheckBox = props => {
     checkedIcon,
     uncheckedIcon,
     iconType,
-    checkedColor,
     uncheckedColor,
     checkedTitle,
     fontFamily,
+    theme,
     ...attributes
   } = props;
+
+  const checkedColor = theme.primary || props.checkedColor;
 
   let Icon = FAIcon;
   if (iconType) {
@@ -111,7 +114,6 @@ CheckBox.defaultProps = {
   iconRight: false,
   right: false,
   center: false,
-  checkedColor: colors.primary,
   uncheckedColor: '#bfbfbf',
   checkedIcon: 'check-square-o',
   uncheckedIcon: 'square-o',
@@ -173,4 +175,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckBox;
+const mapStateToProps = state => ({
+  theme: state.theme,
+});
+
+export default connect(mapStateToProps)(CheckBox);

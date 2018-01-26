@@ -6,7 +6,7 @@ import DummyNavButton from './DummyNavButton';
 import NavButton from './NavButton';
 import Title from './Title';
 import ViewPropTypes from '../config/ViewPropTypes';
-import colors from '../config/colors';
+import { connect } from 'react-redux';
 
 function generateChild(value, type) {
   if (React.isValidElement(value)) {
@@ -43,6 +43,7 @@ const Header = props => {
     backgroundColor,
     outerContainerStyles,
     innerContainerStyles,
+    theme,
     ...attributes
   } = props;
 
@@ -61,6 +62,7 @@ const Header = props => {
       {...attributes}
       style={[
         styles.outerContainer,
+        { backgroundColor: theme.primary },
         backgroundColor && { backgroundColor },
         outerContainerStyles,
       ]}
@@ -95,7 +97,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   outerContainer: {
-    backgroundColor: colors.primary,
     borderBottomColor: '#f2f2f2',
     borderBottomWidth: 1,
     padding: 15,
@@ -103,4 +104,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+const mapStateToProps = state => ({
+  theme: state.theme,
+});
+
+export default connect(mapStateToProps)(Header);

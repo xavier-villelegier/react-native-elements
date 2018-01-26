@@ -2063,7 +2063,6 @@ export class Tile extends React.Component<TileProps, any> {}
 
 export interface Colors {
   readonly primary: string;
-  readonly secondary: string;
   readonly grey0: string;
   readonly grey1: string;
   readonly grey2: string;

@@ -11,6 +11,7 @@ import colors from '../config/colors';
 import Text from '../text/Text';
 import normalize from '../helpers/normalizeText';
 import ViewPropTypes from '../config/ViewPropTypes';
+import { connect } from 'react-redux';
 
 const ButtonGroup = props => {
   const {
@@ -34,6 +35,7 @@ const ButtonGroup = props => {
     setOpacityTo,
     containerBorderRadius,
     disableSelected,
+    theme,
     ...attributes
   } = props;
 
@@ -53,7 +55,7 @@ const ButtonGroup = props => {
             setOpacityTo={setOpacityTo}
             onHideUnderlay={onHideUnderlay}
             onShowUnderlay={onShowUnderlay}
-            underlayColor={underlayColor || colors.primary}
+            underlayColor={underlayColor || theme.primary}
             disabled={disableSelected && isSelected ? true : false}
             onPress={() => {
               if (selectMultiple) {
@@ -95,7 +97,7 @@ const ButtonGroup = props => {
                 borderBottomLeftRadius: containerBorderRadius,
               },
               isSelected && {
-                backgroundColor: colors.primary,
+                backgroundColor: theme.primary,
               },
             ]}
           >
@@ -198,4 +200,8 @@ ButtonGroup.defaultProps = {
   onPress: () => {},
 };
 
-export default ButtonGroup;
+const mapStateToProps = state => ({
+  theme: state.theme,
+});
+
+export default connect(mapStateToProps)(ButtonGroup);

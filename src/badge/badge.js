@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import colors from '../config/colors';
+import { connect } from 'react-redux';
 import ViewPropTypes from '../config/ViewPropTypes';
 
 const Badge = props => {
@@ -15,6 +15,7 @@ const Badge = props => {
     value,
     children,
     element,
+    theme,
     ...attributes
   } = props;
 
@@ -45,7 +46,13 @@ const Badge = props => {
     <View style={[styles.container && wrapperStyle && wrapperStyle]}>
       <Component
         {...attributes}
-        style={[styles.badge, containerStyle && containerStyle]}
+        style={[
+          styles.badge,
+          {
+            backgroundColor: theme.primary,
+          },
+          containerStyle && containerStyle,
+        ]}
         onPress={onPress}
       >
         {childElement}
@@ -76,7 +83,6 @@ const styles = StyleSheet.create({
     padding: 12,
     paddingTop: 3,
     paddingBottom: 3,
-    backgroundColor: colors.primary,
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -87,4 +93,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Badge;
+const mapStateToProps = state => ({
+  theme: state.theme,
+});
+
+export default connect(mapStateToProps)(Badge);

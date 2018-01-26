@@ -10,7 +10,7 @@ import {
   ActivityIndicator,
   Platform,
 } from 'react-native';
-import colors from '../config/colors';
+import { connect } from 'react-redux';
 
 import ViewPropTypes from '../config/ViewPropTypes';
 
@@ -50,6 +50,7 @@ class Button extends Component {
       iconContainerStyle,
       iconRight,
       linearGradientProps,
+      theme,
       ...attributes
     } = this.props;
 
@@ -68,6 +69,7 @@ class Button extends Component {
             {...linearGradientProps}
             style={[
               styles.button,
+              { backgroundColor: theme.primary },
               clear && { backgroundColor: 'transparent', elevation: 0 },
               buttonStyle,
               linearGradientProps && { backgroundColor: 'transparent' },
@@ -155,7 +157,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 3,
-    backgroundColor: colors.primary,
     ...Platform.select({
       android: {
         elevation: 4,
@@ -182,4 +183,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+const mapStateToProps = state => ({
+  theme: state.theme,
+});
+
+export default connect(mapStateToProps)(Button);

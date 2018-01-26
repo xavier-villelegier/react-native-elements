@@ -1,14 +1,16 @@
 import React from 'react';
-import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
 import PropTypes from 'prop-types';
-import Provider from 'react-redux';
+import { Provider } from 'react-redux';
 
-import themeReducer from './theme-reducer';
-
-const store = createStore(themeReducer, applyMiddleware([logger]));
+import store from './store';
+import { setTheme } from './theme-actions';
+import * as themes from './themes';
 
 class ThemeProvider extends React.Component {
+  componentWillMount() {
+    setTheme({ ...themes.default, ...this.props.theme });
+  }
+
   render() {
     return <Provider store={store}>{this.props.children}</Provider>;
   }
