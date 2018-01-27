@@ -1,1 +1,1 @@
-export { setTheme } from './theme-actions';
+export { setTheme, getTheme } from './theme-actions';

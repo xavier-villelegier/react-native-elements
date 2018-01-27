@@ -1,5 +1,3 @@
-import defaultTheme from './default';
+import base from './base';
 
-export default {
-  defaultTheme,
-};
+export { base };

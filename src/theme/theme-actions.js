@@ -11,4 +11,6 @@ const setTheme = theme => {
   store.dispatch(setThemeAction(theme));
 };
 
-export { SET_THEME, setTheme };
+const getTheme = () => store.getState().theme;
+
+export { SET_THEME, setTheme, getTheme };

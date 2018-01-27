@@ -1,8 +1,8 @@
 import { SET_THEME } from './theme-actions';
-import theme from './themes/default';
+import base from './themes/base';
 
 const initialState = {
-  theme,
+  theme: base,
 };
 
 export default (state = initialState, action) => {

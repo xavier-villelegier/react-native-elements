@@ -8,7 +8,7 @@ import * as themes from './themes';
 
 class ThemeProvider extends React.Component {
   componentWillMount() {
-    setTheme({ ...themes.default, ...this.props.theme });
+    setTheme({ ...themes.base, ...this.props.theme });
   }
 
   render() {

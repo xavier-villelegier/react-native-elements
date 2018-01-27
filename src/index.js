@@ -35,8 +35,7 @@ import colors from './config/colors';
 import getIconType, { registerCustomIconType } from './helpers/getIconType';
 import normalize from './helpers/normalizeText';
 import ThemeProvider from './theme/ThemeProvider';
-import { setTheme } from './theme';
-
+import { setTheme, getTheme } from './theme';
 import * as themes from './theme/themes';
 
 export {
@@ -66,5 +65,6 @@ export {
   Overlay,
   ThemeProvider,
   setTheme,
+  getTheme,
   themes,
 };
