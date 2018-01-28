@@ -69,6 +69,7 @@ class SearchBar extends Component {
       noIcon,
       showLoading,
       loadingProps,
+      theme,
       ...attributes
     } = this.props;
     const { hasFocus, isEmpty } = this.state;
@@ -88,6 +89,7 @@ class SearchBar extends Component {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onChangeText={this.onChangeText}
+          selectionColor={theme.primary}
           ref={input => (this.input = input)}
           inputStyle={[styles.input, inputStyle]}
           containerStyle={[styles.inputContainer, containerStyle]}

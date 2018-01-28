@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import IOSSearchBar from './SearchBar-ios';
 import AndroidSearchBar from './SearchBar-android';
 import DefaultSearchBar from './SearchBar-default';
@@ -11,9 +12,9 @@ const SEARCHBAR_COMPONENTS = {
 };
 
 class SearchBar extends Component {
-
   render() {
-    const SearchBar = SEARCHBAR_COMPONENTS[this.props.platform] || DefaultSearchBar;
+    const SearchBar =
+      SEARCHBAR_COMPONENTS[this.props.platform] || DefaultSearchBar;
     return <SearchBar {...this.props} />;
   }
 }
@@ -26,5 +27,8 @@ SearchBar.defaultProps = {
   platform: 'default',
 };
 
+const mapStateToProps = state => ({
+  theme: state.theme,
+});
 
-export default SearchBar;
+export default connect(mapStateToProps)(SearchBar);

@@ -73,6 +73,7 @@ class SearchBar extends Component {
       rightIconContainerStyle,
       inputStyle,
       noIcon,
+      theme,
       placeholderTextColor,
       showLoading,
       loadingProps,
@@ -92,6 +93,7 @@ class SearchBar extends Component {
           onChangeText={this.onChangeText}
           ref={input => (this.input = input)}
           inputStyle={[styles.input, inputStyle]}
+          selectionColor={theme.primary}
           containerStyle={[
             styles.inputContainer,
             !hasFocus && { width: SCREEN_WIDTH - 32, marginRight: 15 },
@@ -130,7 +132,11 @@ class SearchBar extends Component {
             rightIconContainerStyle,
           ]}
         />
-        <Button title={cancelButtonTitle} onPress={this.cancel} />
+        <Button
+          title={cancelButtonTitle}
+          onPress={this.cancel}
+          color={theme.primary}
+        />
       </View>
     );
   }
