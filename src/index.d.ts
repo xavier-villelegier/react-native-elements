@@ -796,8 +796,6 @@ export interface InputProps extends TextInputProperties {
 
   /**
    * 	Adds error message (optional)
-   * *
-   * @default 'Error!'
    */
   errorMessage?: string;
 
