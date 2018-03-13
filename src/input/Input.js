@@ -72,10 +72,11 @@ class Input extends Component {
     return (
       <View>
         {
-          label != null &&
-          <Text style={[styles.label, labelStyle]}>
-            {label}
-          </Text>
+          label && (
+            <Text style={[styles.label, labelStyle]}>
+              {label}
+            </Text>
+          )
         }
         <Animated.View
           style={[
@@ -111,7 +112,7 @@ class Input extends Component {
             </View>
           )}
         </Animated.View>
-        {errorMessage != null && (
+        {errorMessage && (
           <Text style={[styles.error, errorStyle && errorStyle]}>
             {errorMessage}
           </Text>
