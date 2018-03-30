@@ -2,7 +2,7 @@ const octokit = require('@octokit/rest')()
 
 const TRAVIS_PULL_REQUEST = process.env.TRAVIS_PULL_REQUEST
 const TRAVIS_PULL_REQUEST_SHA = process.env.TRAVIS_PULL_REQUEST_SHA
-const owner = 'react-native-training'
+const owner = 'xavier-villelegier'
 const repo = 'react-native-elements'
 
 async function commentPullRequest() {
