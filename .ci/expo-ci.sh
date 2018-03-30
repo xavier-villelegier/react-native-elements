@@ -22,7 +22,8 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   # exp publish --release-channel ${TRAVIS_PULL_REQUEST_SHA}
 
   # Comment the PR
-  cd ../.ci
+  # cd ../
+  cd .ci
   yarn
   node index.js
 fi
