@@ -8,21 +8,21 @@ echo -e "machine github.com\n login react-native-elements-ci\n password $GITHUB_
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   set -x
 
-  # Clone example app and install modules
-  git clone "https://github.com/react-native-training/react-native-elements-app.git"
-  cd react-native-elements-app
-  yarn add "https://github.com/${TRAVIS_PULL_REQUEST_SLUG}.git#${TRAVIS_PULL_REQUEST_SHA}"
-  yarn
-  yarn global add exp
+  # # Clone example app and install modules
+  # git clone "https://github.com/react-native-training/react-native-elements-app.git"
+  # cd react-native-elements-app
+  # yarn add "https://github.com/${TRAVIS_PULL_REQUEST_SLUG}.git#${TRAVIS_PULL_REQUEST_SHA}"
+  # yarn
+  # yarn global add exp
 
-  # Login into expo and publish the example app
-  set +x
-  exp login -u "$EXPO_LOGIN" -p "$EXPO_PASSWORD"  --non-interactive
-  set -x
-  exp publish --release-channel ${TRAVIS_PULL_REQUEST_SHA}
+  # # Login into expo and publish the example app
+  # set +x
+  # exp login -u "$EXPO_LOGIN" -p "$EXPO_PASSWORD"  --non-interactive
+  # set -x
+  # exp publish --release-channel ${TRAVIS_PULL_REQUEST_SHA}
 
   # Comment the PR
-  cd ..
+  cd ../.ci
   yarn
   node index.js
 fi
