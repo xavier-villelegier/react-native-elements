@@ -41,7 +41,7 @@ async function commentPullRequest() {
     console.log(result)
   }
   else {
-    const result = await octokit.issues.editComment({
+    const result = await octokit.issues.createComment({
       owner,
       repo,
       number: TRAVIS_PULL_REQUEST,
